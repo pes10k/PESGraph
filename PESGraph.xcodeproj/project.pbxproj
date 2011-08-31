@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30497911406118A008EBBB4 /* PESGraphRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = F304978F1406118A008EBBB4 /* PESGraphRoute.h */; };
+		F30497921406118A008EBBB4 /* PESGraphRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F30497901406118A008EBBB4 /* PESGraphRoute.m */; };
+		F304979614061A9D008EBBB4 /* PESGraphRouteStep.h in Headers */ = {isa = PBXBuildFile; fileRef = F304979414061A9D008EBBB4 /* PESGraphRouteStep.h */; };
+		F304979714061A9D008EBBB4 /* PESGraphRouteStep.m in Sources */ = {isa = PBXBuildFile; fileRef = F304979514061A9D008EBBB4 /* PESGraphRouteStep.m */; };
 		F3C9E4A21400C6220097ACA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9E4A11400C6220097ACA1 /* Foundation.framework */; };
 		F3C9E4A81400C6220097ACA1 /* PESGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C9E4A71400C6220097ACA1 /* PESGraph.m */; };
 		F3C9E4B01400C6220097ACA1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9E4AF1400C6220097ACA1 /* SenTestingKit.framework */; };
@@ -17,6 +21,10 @@
 		F3C9E4BE1400C6220097ACA1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3C9E4BC1400C6220097ACA1 /* InfoPlist.strings */; };
 		F3C9E4C01400C6220097ACA1 /* PESGraphTests.h in Resources */ = {isa = PBXBuildFile; fileRef = F3C9E4BF1400C6220097ACA1 /* PESGraphTests.h */; };
 		F3C9E4C21400C6220097ACA1 /* PESGraphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C9E4C11400C6220097ACA1 /* PESGraphTests.m */; };
+		F3C9E4D51400CFAF0097ACA1 /* PESGraphNode.h in Headers */ = {isa = PBXBuildFile; fileRef = F3C9E4D31400CFAF0097ACA1 /* PESGraphNode.h */; };
+		F3C9E4D61400CFAF0097ACA1 /* PESGraphNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C9E4D41400CFAF0097ACA1 /* PESGraphNode.m */; };
+		F3C9E4D91400D07E0097ACA1 /* PESGraphEdge.h in Headers */ = {isa = PBXBuildFile; fileRef = F3C9E4D71400D07E0097ACA1 /* PESGraphEdge.h */; };
+		F3C9E4DA1400D07E0097ACA1 /* PESGraphEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C9E4D81400D07E0097ACA1 /* PESGraphEdge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,19 +38,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F304978F1406118A008EBBB4 /* PESGraphRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PESGraphRoute.h; sourceTree = "<group>"; };
+		F30497901406118A008EBBB4 /* PESGraphRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PESGraphRoute.m; sourceTree = "<group>"; };
+		F304979414061A9D008EBBB4 /* PESGraphRouteStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PESGraphRouteStep.h; sourceTree = "<group>"; };
+		F304979514061A9D008EBBB4 /* PESGraphRouteStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PESGraphRouteStep.m; sourceTree = "<group>"; };
 		F3C9E49E1400C6220097ACA1 /* libPESGraph.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPESGraph.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C9E4A11400C6220097ACA1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F3C9E4A51400C6220097ACA1 /* PESGraph-Prefix.pch */ = {isa = PBXFileReference; path = "PESGraph-Prefix.pch"; sourceTree = "<group>"; };
-		F3C9E4A61400C6220097ACA1 /* PESGraph.h */ = {isa = PBXFileReference; path = PESGraph.h; sourceTree = "<group>"; };
+		F3C9E4A51400C6220097ACA1 /* PESGraph-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PESGraph-Prefix.pch"; sourceTree = "<group>"; };
+		F3C9E4A61400C6220097ACA1 /* PESGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PESGraph.h; sourceTree = "<group>"; };
 		F3C9E4A71400C6220097ACA1 /* PESGraph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PESGraph.m; sourceTree = "<group>"; };
 		F3C9E4AE1400C6220097ACA1 /* PESGraphTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PESGraphTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C9E4AF1400C6220097ACA1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F3C9E4B11400C6220097ACA1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F3C9E4B41400C6220097ACA1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		F3C9E4BB1400C6220097ACA1 /* PESGraphTests-Info.plist */ = {isa = PBXFileReference; path = "PESGraphTests-Info.plist"; sourceTree = "<group>"; };
+		F3C9E4BB1400C6220097ACA1 /* PESGraphTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PESGraphTests-Info.plist"; sourceTree = "<group>"; };
 		F3C9E4BD1400C6220097ACA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F3C9E4BF1400C6220097ACA1 /* PESGraphTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PESGraphTests.h; sourceTree = "<group>"; };
 		F3C9E4C11400C6220097ACA1 /* PESGraphTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PESGraphTests.m; sourceTree = "<group>"; };
+		F3C9E4D31400CFAF0097ACA1 /* PESGraphNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PESGraphNode.h; sourceTree = "<group>"; };
+		F3C9E4D41400CFAF0097ACA1 /* PESGraphNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PESGraphNode.m; sourceTree = "<group>"; };
+		F3C9E4D71400D07E0097ACA1 /* PESGraphEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PESGraphEdge.h; sourceTree = "<group>"; };
+		F3C9E4D81400D07E0097ACA1 /* PESGraphEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PESGraphEdge.m; sourceTree = "<group>"; };
+		F3F3B6DA140DFAF800DDE459 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +89,7 @@
 		F3C9E4931400C6220097ACA1 = {
 			isa = PBXGroup;
 			children = (
+				F3F3B6DA140DFAF800DDE459 /* LICENSE.txt */,
 				F3C9E4A31400C6220097ACA1 /* PESGraph */,
 				F3C9E4B91400C6220097ACA1 /* PESGraphTests */,
 				F3C9E4A01400C6220097ACA1 /* Frameworks */,
@@ -104,6 +122,14 @@
 			children = (
 				F3C9E4A61400C6220097ACA1 /* PESGraph.h */,
 				F3C9E4A71400C6220097ACA1 /* PESGraph.m */,
+				F3C9E4D31400CFAF0097ACA1 /* PESGraphNode.h */,
+				F3C9E4D41400CFAF0097ACA1 /* PESGraphNode.m */,
+				F3C9E4D71400D07E0097ACA1 /* PESGraphEdge.h */,
+				F3C9E4D81400D07E0097ACA1 /* PESGraphEdge.m */,
+				F304978F1406118A008EBBB4 /* PESGraphRoute.h */,
+				F30497901406118A008EBBB4 /* PESGraphRoute.m */,
+				F304979414061A9D008EBBB4 /* PESGraphRouteStep.h */,
+				F304979514061A9D008EBBB4 /* PESGraphRouteStep.m */,
 				F3C9E4A41400C6220097ACA1 /* Supporting Files */,
 			);
 			path = PESGraph;
@@ -143,6 +169,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C9E4D51400CFAF0097ACA1 /* PESGraphNode.h in Headers */,
+				F3C9E4D91400D07E0097ACA1 /* PESGraphEdge.h in Headers */,
+				F30497911406118A008EBBB4 /* PESGraphRoute.h in Headers */,
+				F304979614061A9D008EBBB4 /* PESGraphRouteStep.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C9E4A81400C6220097ACA1 /* PESGraph.m in Sources */,
+				F3C9E4D61400CFAF0097ACA1 /* PESGraphNode.m in Sources */,
+				F3C9E4DA1400D07E0097ACA1 /* PESGraphEdge.m in Sources */,
+				F30497921406118A008EBBB4 /* PESGraphRoute.m in Sources */,
+				F304979714061A9D008EBBB4 /* PESGraphRouteStep.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +422,7 @@
 				F3C9E4C71400C6220097ACA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F3C9E4C81400C6220097ACA1 /* Build configuration list for PBXNativeTarget "PESGraphTests" */ = {
 			isa = XCConfigurationList;
@@ -396,6 +431,7 @@
 				F3C9E4CA1400C6220097ACA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
