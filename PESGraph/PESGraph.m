@@ -55,6 +55,18 @@
     return (graphEdge) ? graphEdge.weight : nil;
 }
 
+- (NSInteger)edgeCount
+{
+    NSInteger edgeCount = 0;
+    
+    for (NSString *nodeIdentifier in nodeEdges) {
+        
+        edgeCount += [(NSDictionary *)[nodeEdges objectForKey:nodeIdentifier] count];        
+    }
+    
+    return edgeCount;
+}
+
 - (NSSet *)neighborsOfNode:(PESGraphNode *)aNode
 {
     NSDictionary *edgesFromNode = [nodeEdges objectForKey:aNode.identifier];
@@ -111,10 +123,44 @@
     }
 }
 
+- (BOOL)removeEdgeFromNode:(PESGraphNode*)aNode toNode:(PESGraphNode*)anotherNode 
+{  
+    // Check to see if the edge exists.  No such edge exists, return false and do nothing
+    if ([[nodeEdges objectForKey:aNode.identifier] objectForKey:anotherNode.identifier] == nil) {
+
+        return NO;
+    
+    } else {
+             
+        // Otherwise, remove the relevant edge and return YES
+        [[nodeEdges objectForKey:aNode.identifier] removeObjectForKey:anotherNode.identifier];
+        return YES;
+    }    
+}
+
 - (void)addBiDirectionalEdge:(PESGraphEdge *)anEdge fromNode:(PESGraphNode *)aNode toNode:(PESGraphNode *)anotherNode
 {    
     [self addEdge:anEdge fromNode:aNode toNode:anotherNode];
     [self addEdge:anEdge fromNode:anotherNode toNode:aNode];    
+}
+
+- (BOOL)removeBiDirectionalEdgeFromNode:(PESGraphNode*)aNode toNode:(PESGraphNode*)anotherNode 
+{
+    // First, make sure edges exist in both directions.  If they don't, return NO and do nothing
+    PESGraphEdge *toEdge = [self edgeFromNode:aNode toNeighboringNode:anotherNode];
+    PESGraphEdge *fromEdge = [self edgeFromNode:anotherNode toNeighboringNode:aNode];
+    
+    if (toEdge == nil || fromEdge == nil) {
+        
+        return NO;
+        
+    } else {
+        
+        [self removeEdgeFromNode:aNode toNode:anotherNode];
+        [self removeEdgeFromNode:anotherNode toNode:aNode];
+        return YES;
+
+    }
 }
 
 // Returns the quickest possible path between two nodes, using Dijkstra's algorithm
@@ -254,8 +300,8 @@
     }
 }
 
-- (id)keyOfSmallestValue:(NSDictionary *)aDictionary withInKeys:(NSArray *)anArray {
-
+- (id)keyOfSmallestValue:(NSDictionary *)aDictionary withInKeys:(NSArray *)anArray
+{
     id keyForSmallestValue = nil;
     NSNumber *smallestValue = nil;
     

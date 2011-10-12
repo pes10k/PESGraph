@@ -60,6 +60,8 @@
 		F3C9E4D71400D07E0097ACA1 /* PESGraphEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PESGraphEdge.h; sourceTree = "<group>"; };
 		F3C9E4D81400D07E0097ACA1 /* PESGraphEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PESGraphEdge.m; sourceTree = "<group>"; };
 		F3F3B6DA140DFAF800DDE459 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		F3F3B6DC140DFD0400DDE459 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		F3F3B6DD140DFD7A00DDE459 /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,9 @@
 		F3C9E4931400C6220097ACA1 = {
 			isa = PBXGroup;
 			children = (
+				F3F3B6DD140DFD7A00DDE459 /* CHANGELOG.txt */,
 				F3F3B6DA140DFAF800DDE459 /* LICENSE.txt */,
+				F3F3B6DC140DFD0400DDE459 /* README.txt */,
 				F3C9E4A31400C6220097ACA1 /* PESGraph */,
 				F3C9E4B91400C6220097ACA1 /* PESGraphTests */,
 				F3C9E4A01400C6220097ACA1 /* Frameworks */,

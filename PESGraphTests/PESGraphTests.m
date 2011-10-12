@@ -261,11 +261,103 @@
     [graph release];
 }
 
-// Forth test of the Dijskstra algorithm, with the data taken from
-// http://www.math.unm.edu/~loring/links/graph_s09/dijskstra3.pdf (second problem)
-- (void)testShortestPathFourth
+// Test removing uni-directional edges from a graph
+- (void)testRemoveEdgeFromNode
 {
+    PESGraph *graph = [[PESGraph alloc] init];
+
+    // Create a simple graph with four nodes, and five several uni-directional edges
+    PESGraphNode *aNode = [PESGraphNode nodeWithIdentifier:@"A"];
+    PESGraphNode *bNode = [PESGraphNode nodeWithIdentifier:@"B"];
+    PESGraphNode *cNode = [PESGraphNode nodeWithIdentifier:@"C"];
+    PESGraphNode *dNode = [PESGraphNode nodeWithIdentifier:@"D"];
     
+    [graph addEdge:[PESGraphEdge edgeWithName:@"A -> B"] fromNode:aNode toNode:bNode];
+    [graph addEdge:[PESGraphEdge edgeWithName:@"B -> D"] fromNode:bNode toNode:dNode];
+    [graph addEdge:[PESGraphEdge edgeWithName:@"B -> A"] fromNode:bNode toNode:aNode];    
+    [graph addEdge:[PESGraphEdge edgeWithName:@"C -> D"] fromNode:cNode toNode:dNode];
+    [graph addEdge:[PESGraphEdge edgeWithName:@"A -> C"] fromNode:aNode toNode:cNode];
+    
+    STAssertEquals([NSNumber numberWithInt:4], [NSNumber numberWithInt:graph.nodes.count], @"Bad Amount, graph should contain 4 node, not %d", graph.nodes.count);
+    STAssertEquals([NSNumber numberWithInt:5], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should contain 5 edges, not %d", [graph edgeCount]);
+
+    // Also, specifically check that the edge we're interested in exists
+    STAssertNotNil([graph edgeFromNode:bNode toNeighboringNode:dNode], @"An edge from B -> D should exist in the graph");
+    
+    // Now, remove a couple of edges and make sure that the graph is updated accordingly     
+    STAssertEquals([graph removeEdgeFromNode:bNode toNode:dNode], YES, @"Removing an existing node should return YES");
+    
+    // Should now be 4 edges remaining in the graph
+    STAssertEquals([NSNumber numberWithInt:4], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should now contain 4 edges, not %d", [graph edgeCount]);
+    
+    // Also make sure that there is no longer a edge between these two node
+    STAssertNil([graph edgeFromNode:bNode toNeighboringNode:dNode], @"An edge from B -> D should exist in the graph");
+    
+    // Do it all again, by removing the edge from A -> C
+    STAssertNotNil([graph edgeFromNode:aNode toNeighboringNode:cNode], @"An edge from A -> C should exist in the graph");
+    STAssertEquals([graph removeEdgeFromNode:aNode toNode:cNode], YES, @"Removing an existing node should return YES");
+    STAssertEquals([NSNumber numberWithInt:3], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should now contain 3 edges, not %d", [graph edgeCount]);
+    STAssertNil([graph edgeFromNode:aNode toNeighboringNode:cNode], @"An edge from A -> C should exist in the graph");
+    
+    // Next, make sure we can add the edge back in and have everything update correctly
+    [graph addEdge:[PESGraphEdge edgeWithName:@"A -> C"] fromNode:aNode toNode:cNode];
+    STAssertEquals([NSNumber numberWithInt:4], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should now contain 4 edges, not %d", [graph edgeCount]);
+    STAssertNotNil([graph edgeFromNode:aNode toNeighboringNode:cNode], @"An edge from A -> C should exist in the graph");
+        
+    // Last, check and make sure that we fail when we try to remove a non-existant edge
+    STAssertEquals([graph removeEdgeFromNode:aNode toNode:dNode], NO, @"Trying to remove a non-existant edge should return NO");
+    [graph release];    
 }
+
+- (void)testRemoveBiDirectionalEdgeFromNode
+{
+    PESGraph *graph = [[PESGraph alloc] init];
+    
+    PESGraphNode *aNode = [PESGraphNode nodeWithIdentifier:@"A"];
+    PESGraphNode *bNode = [PESGraphNode nodeWithIdentifier:@"B"];
+    PESGraphNode *cNode = [PESGraphNode nodeWithIdentifier:@"C"];
+    PESGraphNode *dNode = [PESGraphNode nodeWithIdentifier:@"D"];
+    PESGraphNode *fNode = [PESGraphNode nodeWithIdentifier:@"F"];
+    
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"A-C" andWeight:[NSNumber numberWithInt:4]] fromNode:aNode toNode:bNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"A-B" andWeight:[NSNumber numberWithInt:3]] fromNode:aNode toNode:cNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"C-D" andWeight:[NSNumber numberWithInt:2]] fromNode:cNode toNode:dNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"B-D" andWeight:[NSNumber numberWithInt:6]] fromNode:bNode toNode:dNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"D-F" andWeight:[NSNumber numberWithInt:1]] fromNode:dNode toNode:fNode];
+
+    // Basic sanity check to make sure the graph looks how we expect
+    STAssertEquals([NSNumber numberWithInt:5], [NSNumber numberWithInt:graph.nodes.count], @"Bad Amount, graph should contain 4 node, not %d", graph.nodes.count);
+    STAssertEquals([NSNumber numberWithInt:10], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should contain 10 edges, not %d", [graph edgeCount]);
+
+    // Now, try removing an exisitng bi-directional edge
+    STAssertEquals([graph removeBiDirectionalEdgeFromNode:aNode toNode:cNode], YES, @"should be able to correctly remove an exiting bi-directional edge");
+    
+    // Now check to make sure that the counts are still correct
+    STAssertEquals([NSNumber numberWithInt:5], [NSNumber numberWithInt:graph.nodes.count], @"Bad Amount, graph should contain 4 node, not %d", graph.nodes.count);
+    STAssertEquals([NSNumber numberWithInt:8], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should contain 8 edges, not %d", [graph edgeCount]);
+
+    // Now try to remove a non-existing bi-directional edge and make sure it fails
+    STAssertEquals([graph removeBiDirectionalEdgeFromNode:aNode toNode:fNode], NO, @"There is no edge from A <-> F, so removing shoudl fail");
+ 
+    // Check to make sure we _really_ didn't remove anything by looking at the counts too
+    STAssertEquals([NSNumber numberWithInt:5], [NSNumber numberWithInt:graph.nodes.count], @"Bad Amount, graph should still contain 4 node, not %d", graph.nodes.count);
+    STAssertEquals([NSNumber numberWithInt:8], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should still contain 8 edges, not %d", [graph edgeCount]);
+
+    // Now, remove a single edge (ie just half of an origianlly added bi-directional edge)
+    STAssertEquals([graph removeEdgeFromNode:dNode toNode:cNode], YES, @"Should be able to successfully remove a single edge of an (originally) bi-direcitonal edge");
+    STAssertEquals([NSNumber numberWithInt:7], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should now contain 7 edges, not %d", [graph edgeCount]);
+    
+    // Next, make sure trying to remove a bi-directional edge, where one direction of the edge has already been removed, fails
+    STAssertEquals([graph removeBiDirectionalEdgeFromNode:dNode toNode:cNode], NO, @"There edge from c -> d is no longer bi-directional, so this should fail");
+    
+    // Since we didn't actually remove anything above, we should still have 7 edges in the graph
+    STAssertEquals([NSNumber numberWithInt:7], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should now contain 7 edges, not %d", [graph edgeCount]);
+
+    // Last, make sure we can remove a bi-directional edge, even when we try to remove them in the opposite order we declaried them (ie removing
+    // D <-> F should have the same effect as removing F <-> D
+    STAssertEquals([graph removeBiDirectionalEdgeFromNode:fNode toNode:dNode], YES, @"We should be able to remove the bi-directional edge between two nodes, regardless of node order");
+    STAssertEquals([NSNumber numberWithInt:5], [NSNumber numberWithInt:[graph edgeCount]], @"Bad Amount, graph should now contain 5 edges, not %d", [graph edgeCount]);
+}
+
 
 @end

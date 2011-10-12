@@ -1,5 +1,10 @@
 PESGraph ChangeLog
 
+Date: 10-11-2011
+---
+ - Add methods to remove nodes from the graph (with help from Mark Rabenhorst <littlewolfee@gmail.com>)
+ - Additional unit tests
+
 Version: 0.1
 Date: 08-31-2011
 ---

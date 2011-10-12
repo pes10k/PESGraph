@@ -33,6 +33,13 @@
 @property (nonatomic, readonly) NSDictionary *nodes;
 
 /**
+    Returns a count of the number of edges currently in the graph.  Bi-directional edges are counted
+    as two edges, for this count
+    @returns an integer, >= 0, counting the number of edges in the graph.
+ */
+- (NSInteger)edgeCount;
+
+/**
 	Returns a node in the graph with the given unique identifier, or nil if no such node exists
 	@param anIdentifier a string identifier coresponding to the indentifier property of a node
         in the graph
@@ -87,6 +94,15 @@
 - (void)addEdge:(PESGraphEdge *)anEdge fromNode:(PESGraphNode *)aNode toNode:(PESGraphNode *)anotherNode;
 
 /**
+    Removes a directional, weighted edge between two nodes in the graph.  If the edge does not exist, the 
+    method does nothing.
+    @param aNode the node that the edge travels from
+    @param anotherNode the node that the edge travels to
+    @returns a boolean description of whether an edge was removed
+ */
+- (BOOL)removeEdgeFromNode:(PESGraphNode*)aNode toNode:(PESGraphNode*)anotherNode;
+
+/**
     Adds a weighted edge that travels in both directions from the two given nodes in the graph.  If any
         provided nodes are not currently found in the graph, they're added to the collection
     @param anEdge the edge describing the connection between the two nodes
@@ -94,6 +110,15 @@
  	@param anotherNode the other of the two nodes on the other side of the edge
  */
 - (void)addBiDirectionalEdge:(PESGraphEdge *)anEdge fromNode:(PESGraphNode *)aNode toNode:(PESGraphNode *)anotherNode;
+
+/**
+    Removes a bi-directional, weighted edge between two nodes in the graph.  If either edge does not exist, the 
+    method does nothing.
+    @param aNode the node that the edge travels from
+    @param anotherNode the node that the edge travels to
+    @returns a boolean description of whether a bi-directional edge was removed 
+ */
+- (BOOL)removeBiDirectionalEdgeFromNode:(PESGraphNode*)aNode toNode:(PESGraphNode*)anotherNode;
 
 /**
 	Returns a route object that describes the quickest path between the two given nodes.  If no route
