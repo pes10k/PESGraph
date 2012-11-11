@@ -59,4 +59,14 @@
     return [NSString stringWithFormat:@"Edge: %@ with Weight:%@", self.name, self.weight];
 }
 
+#pragma mark -
+#pragma mark Memory Management
+
+- (void)dealloc {
+    
+    [weight release];
+    [name release];
+    [super dealloc];
+}
+
 @end

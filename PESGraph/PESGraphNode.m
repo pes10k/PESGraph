@@ -24,4 +24,13 @@
     return aNode;
 }
 
+- (void)dealloc {
+    
+    [identifier release];
+    [title release];
+    [additionalData release];
+    [super dealloc];
+}
+
+
 @end
