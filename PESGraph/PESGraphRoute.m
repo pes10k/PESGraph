@@ -46,7 +46,7 @@
         
         if (aStep.edge) {
 
-            [string appendFormat:@"\t%@ -> \n", aStep.node.identifier, aStep.edge];
+            [string appendFormat:@"\t%@ -> %@\n", aStep.node.identifier, aStep.edge];
 
         } else {
             
