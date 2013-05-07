@@ -29,9 +29,9 @@
 
 - (void)addStepFromNode:(PESGraphNode *)aNode withEdge:(PESGraphEdge *)anEdge
 {
-    PESGraphRouteStep *aStep = [[[PESGraphRouteStep alloc] initWithNode:aNode
+    PESGraphRouteStep *aStep = [[PESGraphRouteStep alloc] initWithNode:aNode
                                                                 andEdge:anEdge
-                                                            asBeginning:([steps count] == 0)] autorelease];
+                                                            asBeginning:([steps count] == 0)];
     
     [steps addObject:aStep];
 }
@@ -46,7 +46,7 @@
         
         if (aStep.edge) {
 
-            [string appendFormat:@"\t%@ -> \n", aStep.node.identifier, aStep.edge];
+            [string appendFormat:@"\t%@ -> %@\n", aStep.node.identifier, aStep.edge];
 
         } else {
             
@@ -91,10 +91,5 @@
 #pragma mark -
 #pragma mark Memory Management
 
-- (void)dealloc
-{
-    [steps release];
-    [super dealloc];
-}
 
 @end

@@ -268,7 +268,7 @@
         
         // If we did successfully find a path, create and populate a route object, describing each step
         // of the path.
-        PESGraphRoute *route = [[[PESGraphRoute alloc] init] autorelease];
+        PESGraphRoute *route = [[PESGraphRoute alloc] init];
         
         // We do this by first building the route backwards, so the below array with have the last step
         // in the route (the destination) in the 0th position, and the origin in the last position
@@ -328,11 +328,5 @@
 #pragma mark -
 #pragma mark Memory Management
 
-- (void)dealloc
-{
-    [nodes release];
-    [nodeEdges release];
-    [super dealloc];
-}
 
 @end
