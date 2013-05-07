@@ -35,7 +35,6 @@
     
     STAssertEquals([NSNumber numberWithInt:4], [NSNumber numberWithInt:graph.nodes.count], @"Bad Amount, graph should contain 4 elements, not %d", graph.nodes.count);
     
-    [graph release];
 }
 
 // Test to make sure that edges are managed in the graph correctly.  The test graph below 
@@ -77,7 +76,6 @@
     // Last, make sure that nodes w/ no connection correctly report as nil
     STAssertNil([graph weightFromNode:aNode toNeighboringNode:fNode], @"Invald weight from a -> f, should be %@, not %@", nil, [graph weightFromNode:aNode toNeighboringNode:fNode]);
 
-    [graph release];
 }
 
 // Test to make sure edges are manage correctly when they're one directional
@@ -116,7 +114,6 @@
     STAssertNil([graph weightFromNode:aNode toNeighboringNode:dNode], @"Invald weight from a -> d, should be %@, not %@", nil, [graph weightFromNode:aNode toNeighboringNode:dNode]);
 
     
-    [graph release];    
 }
 
 // Test to make sure that nodes are correctly stored and relatable to their neighbors
@@ -150,7 +147,6 @@
     STAssertFalse([neighborsOfA containsObject:fNode], @"Incorrect Neighbors.  Node F should not be a neighbor of A");    
     STAssertFalse([neighborsOfA containsObject:dNode], @"Incorrect Neighbors.  Node D should not be a neighbor of A");    
 
-    [graph release];
 }
 
 // Test the shortest path, to make sure we're correctly pulling out the shortest path between two nodes
@@ -185,7 +181,6 @@
     STAssertEquals(eNode, [route endingNode], @"Invald starting point for route, should be node E, not %d", [[route endingNode] identifier]);
     STAssertTrue(20 == [route length], @"Invalid distance for route, should be 23, not %f.0", [route length]);
     
-    [graph release];
 }
 
 // A second test of the Dijkstra algorithm, here with the data on
@@ -216,7 +211,6 @@
     STAssertEquals(eNode, [route endingNode], @"Invald starting point for route, should be node E, not %d", [[route endingNode] identifier]);
     STAssertTrue(4 == [route length], @"Invalid distance for route, should be 4, not %f.0", [route length]);
     
-    [graph release];
 }
 
 // A third test of the Dijkstra algorithm implementation, with the data taken from
@@ -258,7 +252,6 @@
     STAssertTrue((7 == [route count] || 8 == [route count]), @"Invald number of steps in route, should be 7 or 8, not %d", [route count]);
     STAssertTrue(9 == [route length], @"Invalid distance for route, should be 9, not %f.0", [route length]);
     
-    [graph release];
 }
 
 // Test removing uni-directional edges from a graph
@@ -306,7 +299,6 @@
         
     // Last, check and make sure that we fail when we try to remove a non-existant edge
     STAssertEquals([graph removeEdgeFromNode:aNode toNode:dNode], NO, @"Trying to remove a non-existant edge should return NO");
-    [graph release];    
 }
 
 - (void)testRemoveBiDirectionalEdgeFromNode
