@@ -288,7 +288,7 @@
         // Now, finally, at this point, we can reverse the array and build the complete route object, by stepping through 
         // the nodes and piecing them togheter with their routes
         NSUInteger numNodesInPath = [nodesInRouteInReverseOrder count];
-        for (int i = numNodesInPath - 1; i >= 0; i--) {
+        for (int i = (int)numNodesInPath - 1; i >= 0; i--) {
             
             PESGraphNode *currentGraphNode = [nodesInRouteInReverseOrder objectAtIndex:i];
             PESGraphNode *nextGraphNode = (i - 1 < 0) ? nil : [nodesInRouteInReverseOrder objectAtIndex:(i - 1)];

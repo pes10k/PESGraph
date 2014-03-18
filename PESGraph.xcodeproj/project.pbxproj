@@ -13,7 +13,6 @@
 		F304979714061A9D008EBBB4 /* PESGraphRouteStep.m in Sources */ = {isa = PBXBuildFile; fileRef = F304979514061A9D008EBBB4 /* PESGraphRouteStep.m */; };
 		F3C9E4A21400C6220097ACA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9E4A11400C6220097ACA1 /* Foundation.framework */; };
 		F3C9E4A81400C6220097ACA1 /* PESGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C9E4A71400C6220097ACA1 /* PESGraph.m */; };
-		F3C9E4B01400C6220097ACA1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9E4AF1400C6220097ACA1 /* SenTestingKit.framework */; };
 		F3C9E4B21400C6220097ACA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9E4B11400C6220097ACA1 /* UIKit.framework */; };
 		F3C9E4B31400C6220097ACA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9E4A11400C6220097ACA1 /* Foundation.framework */; };
 		F3C9E4B51400C6220097ACA1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9E4B41400C6220097ACA1 /* CoreGraphics.framework */; };
@@ -47,8 +46,7 @@
 		F3C9E4A51400C6220097ACA1 /* PESGraph-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PESGraph-Prefix.pch"; sourceTree = "<group>"; };
 		F3C9E4A61400C6220097ACA1 /* PESGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PESGraph.h; sourceTree = "<group>"; };
 		F3C9E4A71400C6220097ACA1 /* PESGraph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PESGraph.m; sourceTree = "<group>"; };
-		F3C9E4AE1400C6220097ACA1 /* PESGraphTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PESGraphTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3C9E4AF1400C6220097ACA1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F3C9E4AE1400C6220097ACA1 /* PESGraphTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PESGraphTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C9E4B11400C6220097ACA1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F3C9E4B41400C6220097ACA1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		F3C9E4BB1400C6220097ACA1 /* PESGraphTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PESGraphTests-Info.plist"; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3C9E4B01400C6220097ACA1 /* SenTestingKit.framework in Frameworks */,
 				F3C9E4B21400C6220097ACA1 /* UIKit.framework in Frameworks */,
 				F3C9E4B31400C6220097ACA1 /* Foundation.framework in Frameworks */,
 				F3C9E4B51400C6220097ACA1 /* CoreGraphics.framework in Frameworks */,
@@ -105,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				F3C9E49E1400C6220097ACA1 /* libPESGraph.a */,
-				F3C9E4AE1400C6220097ACA1 /* PESGraphTests.octest */,
+				F3C9E4AE1400C6220097ACA1 /* PESGraphTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				F3C9E4A11400C6220097ACA1 /* Foundation.framework */,
-				F3C9E4AF1400C6220097ACA1 /* SenTestingKit.framework */,
 				F3C9E4B11400C6220097ACA1 /* UIKit.framework */,
 				F3C9E4B41400C6220097ACA1 /* CoreGraphics.framework */,
 			);
@@ -216,8 +212,8 @@
 			);
 			name = PESGraphTests;
 			productName = PESGraphTests;
-			productReference = F3C9E4AE1400C6220097ACA1 /* PESGraphTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = F3C9E4AE1400C6220097ACA1 /* PESGraphTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -225,7 +221,8 @@
 		F3C9E4951400C6220097ACA1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = F3C9E4981400C6220097ACA1 /* Build configuration list for PBXProject "PESGraph" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -320,7 +317,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -335,6 +331,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -343,7 +340,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -359,7 +355,6 @@
 		F3C9E4C61400C6220097ACA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/PESGraph.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -374,7 +369,6 @@
 		F3C9E4C71400C6220097ACA1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/PESGraph.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -392,14 +386,13 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PESGraph/PESGraph-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "PESGraphTests/PESGraphTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -409,14 +402,13 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PESGraph/PESGraph-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "PESGraphTests/PESGraphTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
