@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PESGraph"
-  s.version      = "0.2"
+  s.version      = "0.2.0"
   s.summary      = "Objective-C implementation of a Graph, along with Dijkstra's algorithm for shortest path finding"
   s.homepage     = "https://github.com/snyderp/PESGraph"
 
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author       = { "Peter Snyder" => "snyderp@gmail.com" }
 
   s.platform     = :ios, '7.0'
-  s.source       = { :git => "https://github.com/snyderp/PESGraph.git", :tag => "v0.2" }
+  s.source       = { :git => "https://github.com/snyderp/PESGraph.git", :tag => "v0.2.0" }
   s.source_files = 'PESGraph', 'PESGraph/*.{h,m}'
   s.framework    = 'Foundation'
 
