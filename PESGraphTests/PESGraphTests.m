@@ -351,5 +351,41 @@
     XCTAssertEqual([NSNumber numberWithInt:5], [NSNumber numberWithInt:(int)[graph edgeCount]], @"Bad Amount, graph should now contain 5 edges, not %ld", (long)[graph edgeCount]);
 }
 
+// Test NSCopying of graph, ensure the copy is a deep copy
+- (void)testDeepCopyOfGraph
+{
+    PESGraph *graph = [[PESGraph alloc] init];
+    
+    PESGraphNode *aNode = [PESGraphNode nodeWithIdentifier:@"A"];
+    PESGraphNode *bNode = [PESGraphNode nodeWithIdentifier:@"B"];
+    PESGraphNode *cNode = [PESGraphNode nodeWithIdentifier:@"C"];
+    PESGraphNode *dNode = [PESGraphNode nodeWithIdentifier:@"D"];
+    PESGraphNode *fNode = [PESGraphNode nodeWithIdentifier:@"F"];
+    
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"A-C" andWeight:[NSNumber numberWithInt:4]] fromNode:aNode toNode:bNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"A-B" andWeight:[NSNumber numberWithInt:3]] fromNode:aNode toNode:cNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"C-D" andWeight:[NSNumber numberWithInt:2]] fromNode:cNode toNode:dNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"B-D" andWeight:[NSNumber numberWithInt:6]] fromNode:bNode toNode:dNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"D-F" andWeight:[NSNumber numberWithInt:1]] fromNode:dNode toNode:fNode];
+    
+    PESGraph *anotherGraph = [graph copy];
+    
+    // Check if string value is copied
+    XCTAssertTrue([((PESGraphNode *)graph.nodes[@"A"]).identifier isEqualToString:@"A"]);
+    XCTAssertTrue([((PESGraphNode *)anotherGraph.nodes[@"A"]).identifier isEqualToString:@"A"]);
+    
+    // Pointer address of the graph is different
+    XCTAssertFalse(graph == anotherGraph);
+    
+    // Pointer address of the node is different
+    XCTAssertNotEqual(((PESGraphNode *)anotherGraph.nodes[@"A"]), ((PESGraphNode *)graph.nodes[@"A"]));
+    
+    [graph removeBiDirectionalEdgeFromNode:aNode toNode:bNode];
+    
+    XCTAssertEqual([graph edgeCount], 8);
+    
+    // The deep copied graph edge count remain 10, unaffected by the removal of edge on original graph
+    XCTAssertEqual([anotherGraph edgeCount], 10);
+}
 
 @end

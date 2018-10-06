@@ -62,5 +62,31 @@
 #pragma mark -
 #pragma mark Memory Management
 
+#pragma mark - NSCopying
+-(id)copyWithZone:(NSZone *)zone
+{
+    PESGraphEdge *anotherEdge = [[PESGraphEdge allocWithZone:zone] init];
+    anotherEdge.name = [name copy];
+    anotherEdge.weight = [weight copy];
+    
+    return anotherEdge;
+}
 
+#pragma mark - NSCoding
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.weight forKey:@"weight"];
+    [aCoder encodeObject:self.name forKey:@"name"];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super init];
+    if (self) {
+        self.weight = [coder decodeObjectForKey:@"weight"];
+        self.name = [coder decodeObjectForKey:@"name"];
+    }
+    
+    return self;
+}
 @end

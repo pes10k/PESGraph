@@ -28,6 +28,24 @@
     return self;
 }
 
+- (id)initWithNodes:(NSMutableDictionary *)aNodes andEdges:(NSMutableDictionary *)aNodeEdges
+{
+    self = [super init];
+    
+    if (self) {
+        // Apple recommended deep copy method
+        // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Collections/Articles/Copying.html
+        NSData *buffer;
+        buffer = [NSKeyedArchiver archivedDataWithRootObject: aNodes];
+        nodes = [NSKeyedUnarchiver unarchiveObjectWithData: buffer];
+        
+        buffer = [NSKeyedArchiver archivedDataWithRootObject: aNodeEdges];
+        nodeEdges = [NSKeyedUnarchiver unarchiveObjectWithData: buffer];
+    }
+    
+    return self;
+}
+
 - (PESGraphNode *)nodeInGraphWithIdentifier:(NSString *)anIdentifier
 {
     return [nodes objectForKey:anIdentifier];
@@ -328,5 +346,12 @@
 #pragma mark -
 #pragma mark Memory Management
 
+#pragma mark - NSCopying
+-(id)copyWithZone:(NSZone *)zone
+{
+    PESGraph *anotherGraph = [[PESGraph allocWithZone:zone] initWithNodes:nodes andEdges:nodeEdges];
+    
+    return anotherGraph;
+}
 
 @end

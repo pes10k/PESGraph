@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PESGraphEdge : NSObject {
+@interface PESGraphEdge : NSObject <NSCopying, NSCoding> {
     
     /**
         The weight of this edge from its starting point to its ending point.
