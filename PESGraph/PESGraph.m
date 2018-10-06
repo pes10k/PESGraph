@@ -28,6 +28,18 @@
     return self;
 }
 
+- (id)initWithNodes:(NSDictionary *)nodes andEdges:(NSDictionary *)nodeEdges
+{
+    self = [super init];
+    
+    if (self) {
+        nodes = [NSDictionary dictionaryWithDictionary:nodes];
+        nodeEdges = [NSDictionary dictionaryWithDictionary:nodeEdges];
+    }
+    
+    return self;
+}
+
 - (PESGraphNode *)nodeInGraphWithIdentifier:(NSString *)anIdentifier
 {
     return [nodes objectForKey:anIdentifier];
@@ -328,5 +340,12 @@
 #pragma mark -
 #pragma mark Memory Management
 
+#pragma mark - NSCopying
+-(id)copyWithZone:(NSZone *)zone
+{
+    PESGraph *anotherGraph = [[PESGraph allocWithZone:zone] initWithNodes:nodes andEdges:nodeEdges];
+    
+    return anotherGraph;
+}
 
 @end

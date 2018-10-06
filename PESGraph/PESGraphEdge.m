@@ -62,5 +62,13 @@
 #pragma mark -
 #pragma mark Memory Management
 
-
+#pragma mark - NSCopying
+-(id)copyWithZone:(NSZone *)zone
+{
+    PESGraphEdge *anotherEdge = [[PESGraphEdge allocWithZone:zone] init];
+    anotherEdge.name = [name copy];
+    anotherEdge.weight = [weight copy];
+    
+    return anotherEdge;
+}
 @end

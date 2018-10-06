@@ -24,6 +24,15 @@
     return aNode;
 }
 
-
+#pragma mark - NSCopying
+-(id)copyWithZone:(NSZone *)zone
+{
+    PESGraphNode *anotherNode = [[PESGraphNode allocWithZone:zone] init];
+    anotherNode.identifier = [identifier copy];
+    anotherNode.title = [identifier copy];
+    anotherNode.additionalData = [additionalData mutableCopy];
+    
+    return anotherNode;
+}
 
 @end
