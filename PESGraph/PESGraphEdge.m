@@ -71,4 +71,22 @@
     
     return anotherEdge;
 }
+
+#pragma mark - NSCoding
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.weight forKey:@"weight"];
+    [aCoder encodeObject:self.name forKey:@"name"];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super init];
+    if (self) {
+        self.weight = [coder decodeObjectForKey:@"weight"];
+        self.name = [coder decodeObjectForKey:@"name"];
+    }
+    
+    return self;
+}
 @end

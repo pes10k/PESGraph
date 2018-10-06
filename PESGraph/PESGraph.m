@@ -28,13 +28,19 @@
     return self;
 }
 
-- (id)initWithNodes:(NSDictionary *)nodes andEdges:(NSDictionary *)nodeEdges
+- (id)initWithNodes:(NSMutableDictionary *)aNodes andEdges:(NSMutableDictionary *)aNodeEdges
 {
     self = [super init];
     
     if (self) {
-        nodes = [NSDictionary dictionaryWithDictionary:nodes];
-        nodeEdges = [NSDictionary dictionaryWithDictionary:nodeEdges];
+        // Apple recommended deep copy method
+        // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Collections/Articles/Copying.html
+        NSData *buffer;
+        buffer = [NSKeyedArchiver archivedDataWithRootObject: aNodes];
+        nodes = [NSKeyedUnarchiver unarchiveObjectWithData: buffer];
+        
+        buffer = [NSKeyedArchiver archivedDataWithRootObject: aNodeEdges];
+        nodeEdges = [NSKeyedUnarchiver unarchiveObjectWithData: buffer];
     }
     
     return self;
